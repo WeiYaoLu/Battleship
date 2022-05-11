@@ -6,8 +6,7 @@ const hover = (event) => {
     let beginIndex = parseInt(event.target.id);
     let orientationBtn = document.getElementById('orientBtn');
     if (orientationBtn.textContent === 'Horizontal') {
-        if (beginIndex % 10 > (beginIndex + currentShip.length) % 10 && (beginIndex + currentShip.length) % 10 !== 0) {
-        }
+        if (beginIndex % 10 > (beginIndex + currentShip.length) % 10 && (beginIndex + currentShip.length) % 10 !== 0);
         else {
             for (let i = 0; i < currentShip.length; i++) {
                 let index = beginIndex + i;
@@ -28,12 +27,10 @@ const hover = (event) => {
                     index = '0' + index;
                 }
                 let currentTar = document.getElementById(`${index}`);
-
                 currentTar.classList.add('selected');
             }
         }
     }
-
 }
 const orientBtn = () => {
     console.log('orient')
@@ -57,22 +54,19 @@ const playerExit = (event) => {
         for (let i = 0; i < currentShip.length; i++) {
             let index = beginIndex + i;
             if (index < 10) {
-                index = '0' + index
+                index = '0' + index;
             }
             let currentTar = document.getElementById(`${index}`);
-
             currentTar.classList.remove('selected');
         }
     } else {
         for (let i = 0; i < currentShip.length * 10; i += 10) {
             let index = beginIndex + i;
-
             if (index < 10) {
                 index = '0' + index
                 console.log(index);
             }
             let currentTar = document.getElementById(`${index}`);
-
             currentTar.classList.remove('selected');
         }
     }
@@ -113,7 +107,6 @@ const userPlace = (ships, player, computer, ship) => {
 const isShipPlaced = (arr) => {
     for (let i = 0; i < arr.length; i++) {
         if (!arr[i].isPlacedGetter()) {
-
             return arr[i]
         }
     }

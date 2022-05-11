@@ -32,7 +32,6 @@ const createElement = {
 const createContainer = () => {
     const main = createElement.createDiv('mainContainer');
     document.body.appendChild(main);
-
 }
 
 const createGameBoardUI = (player1, computer1) => {

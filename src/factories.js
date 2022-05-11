@@ -1,5 +1,3 @@
-
-
 const shipFactory = (name, length) => {
     const health = [];
     let isPlaced = false;
@@ -23,10 +21,10 @@ const shipFactory = (name, length) => {
 
 
 const gameBoardFactory = () => {
-    let gameArray = [];
+    let board = [];
 
     const startGame = () => {
-        gameArray = [
+        board = [
             ['', '', '', '', '', '', '', '', '', ''],
             ['', '', '', '', '', '', '', '', '', ''],
             ['', '', '', '', '', '', '', '', '', ''],
@@ -47,48 +45,48 @@ const gameBoardFactory = () => {
             let empty = true
             if (orient === 'horizontal') {
                 for (let i = c; i < (c + ship.length); i++) {
-                    if (gameArray[r][i] !== '') {
+                    if (board[r][i] !== '') {
                         empty = false
                     }
                 }
             } else if (orient === 'vertical') {
                 for (let i = r; i < (r + ship.length); i++) {
-                    if (gameArray[i][c] !== '') {
+                    if (board[i][c] !== '') {
                         empty = false
                     }
                 }
             }
             return empty
         };
-        
+
         if (orient === 'horizontal' && canPlace()) {
             for (let i = c; i < (c + ship.length); i++) {
-                gameArray[r][i] = ship;
+                board[r][i] = ship;
             }
             shipsAlive.push(ship.name)
         } else if (orient === 'vertical' && canPlace()) {
             for (let i = r; i < ((ship.length + r)); i++) {
-                gameArray[i][c] = ship;
+                board[i][c] = ship;
             }
             shipsAlive.push(ship.name)
         }
-        return gameArray;
+        return board;
     }
 
     const recieveAttack = (r, c) => {
-        if (gameArray[r][c] === '') {
-            gameArray[r][c] = 'x'
+        if (board[r][c] === '') {
+            board[r][c] = 'x'
         } else {
-            gameArray[r][c].hit();
-            if (gameArray[r][c].isSunk()) {
-                shipsAlive.pop(gameArray[r][c].name)
+            board[r][c].hit();
+            if (board[r][c].isSunk()) {
+                shipsAlive.pop(board[r][c].name)
             }
-            gameArray[r][c] = 'X';
+            board[r][c] = 'X';
         }
-        return gameArray
+        return board
     }
 
-    const arrayGetter = () => gameArray;
+    const arrayGetter = () => board;
     return { startGame, place, recieveAttack, arrayGetter, shipsAliveGetter }
 }
 

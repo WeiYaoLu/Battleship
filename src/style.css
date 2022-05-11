@@ -43,8 +43,8 @@ h1 {
 #computerGameboard {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    height: 40vw;
-    width: 40vw;
+    height: 30vw;
+    width: 30vw;
 }
 
 .cell {
